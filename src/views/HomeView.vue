@@ -1,8 +1,8 @@
 <template>
- <section id="home">
-  <h1>My name is <span class="myName">Oslin Johnson</span></h1>
-  <h2>I am <span ref="textContainer"></span></h2>
- </section>
+  <section id="home">
+    <h1>My name is <span class="myName">Oslin Johnson</span></h1>
+    <h2>I am <span ref="textContainer"></span></h2>
+  </section>
 </template>
 
 <script>
@@ -11,12 +11,13 @@ export default {
   data() {
     return {
       text: [
-        "a JavaScript Victim",
-        "Error hunter",
-        "styling illiterate"
+        "a JavaScript Victim 🤔",
+        "Error hunter🙀",
+        "styling illiterate",
+        "Joh Snow 🕺",
       ],
     };
-  } ,
+  },
   methods: {
     waitForMs(ms) {
       return new Promise((resolve) => setTimeout(resolve, ms));
@@ -30,13 +31,13 @@ export default {
         i++;
       }
     },
-    async deleteSentence() { 
+    async deleteSentence() {
       let sentence = this.$refs.textContainer.innerHTML;
       let letters = sentence.split("");
-      while(letters.length > 0) {
+      while (letters.length > 0) {
         await this.waitForMs(100);
         letters.pop();
-        this.$refs.textContainer.innerHTML = letters.join("")
+        this.$refs.textContainer.innerHTML = letters.join("");
       }
     },
     async sentenceLoop(sentenceList) {
@@ -44,22 +45,20 @@ export default {
       let t = true;
       while (t) {
         await this.typeSentence(sentenceList[i]);
-        await this.waitForMs(1500)
-        await this.deleteSentence()
-        await this.waitForMs(500)
+        await this.waitForMs(1500);
+        await this.deleteSentence();
+        await this.waitForMs(500);
         i++;
-        if(i >= sentenceList.length) {
+        if (i >= sentenceList.length) {
           i = 0;
         }
       }
-
     },
-
   },
   async mounted() {
-    this.sentenceLoop(this.text)
+    this.sentenceLoop(this.text);
   },
-}
+};
 </script>
 <style scoped>
 #home {
@@ -76,9 +75,8 @@ h1 {
 }
 h2 {
   position: relative;
-  
 }
-h2 span:after{
+h2 span:after {
   content: "";
   width: 3px;
   height: 100%;
@@ -86,17 +84,11 @@ h2 span:after{
   position: absolute;
   animation: blink 1s infinite;
 }
-.myName{
- color: #fff;
-  text-shadow:
-      0 0 7px #fff,
-      0 0 10px #fff,
-      0 0 21px #fff,
-      0 0 42px rgb(255, 23, 240),
-      0 0 82px rgb(238, 0, 255),
-      0 0 92px rgb(255, 0, 140),
-      0 0 102px rgb(255, 0, 153),
-      0 0 151px #0fa;
+.myName {
+  color: #fff;
+  text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px rgb(255, 23, 240),
+    0 0 82px rgb(238, 0, 255), 0 0 92px rgb(255, 0, 140), 0 0 102px rgb(255, 0, 153),
+    0 0 151px #0fa;
 }
 @keyframes blink {
   0%,
